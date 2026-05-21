@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Joy at Sea – Animated Children's Book</title>
+		<meta
+			name="description"
+			content="Joy at Sea – A magical animated children's book full of adventure, wonder, and ocean fun!"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+		<!-- Favicon emoji -->
+		<link
+			rel="icon"
+			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛵</text></svg>"
+		/>
+	</head>
+	<body>
+		<!-- ===== NAVIGATION ===== -->
+		<nav id="navbar">
+			<a href="index.html" class="nav-logo"> <span>⛵</span> Joy at Sea </a>
+			<button class="hamburger" aria-label="Menu">
+				<span></span><span></span><span></span>
+			</button>
+			<ul class="nav-links">
+				<li><a href="#about" class="active">About</a></li>
+				<li><a href="shop.html">Shop</a></li>
+				<li><a href="about.html">About Us</a></li>
+				<li><a href="#contact">Contact</a></li>
+				<li><a href="shop.html" class="btn-nav">Order Now 🛒</a></li>
+			</ul>
+		</nav>
+
+		<!-- ===== HERO ===== -->
+		<section class="hero" id="home">
+			<!-- Replace this div with <img> or set background-image via inline style for your own background -->
+			<div class="hero-bg-placeholder"></div>
+
+			<!-- Floating sea elements -->
+			<div class="floating-elements">
+				<span class="float-el">🐬</span>
+				<span class="float-el">🌊</span>
+				<span class="float-el">🐠</span>
+				<span class="float-el">⚓</span>
+				<span class="float-el">🦀</span>
+				<span class="float-el">🐙</span>
+			</div>
+
+			<div class="hero-content">
+				<div class="hero-badge">A New World to Discover</div>
+				<h1>
+					Joy at Sea
+					<span>and Friends</span>
+				</h1>
+				<p>
+					Welcome aboard! We are so excited to have you join us on this
+					adventure! Meet Joy at Sea and her friends! We will set sail on the
+					seven seas and learn about courage, purpose and community in every
+					adventure!
+				</p>
+				<div class="hero-buttons">
+					<a href="shop.html" class="btn btn-primary">🛒 Order on Amazon</a>
+					<a href="#about" class="btn btn-outline">Discover More ↓</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Wave down -->
+		<div class="wave-divider" style="margin-top: -4px">
+			<svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="#fffdf5">
+				<path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" />
+			</svg>
+		</div>
+
+		<!-- ===== ABOUT THE BOOK ===== -->
+		<section class="about-book" id="about">
+			<div class="about-book-bg-placeholder"></div>
+			<!-- To use your own background image, replace the line above with:
+         <style>section.about-book { background-image: url('images/your-image.jpg'); }</style> -->
+
+			<div class="section-inner">
+				<div class="about-grid">
+					<div class="book-mockup reveal-left">
+						<!-- Book cover: replace .book-cover-placeholder with <img class="book-cover-img" src="images/cover.jpg" alt="Joy at Sea Cover"> -->
+						<div class="book-cover">
+							<div class="book-stars">
+								<div class="star"></div>
+								<div class="star"></div>
+								<div class="star"></div>
+								<div class="star"></div>
+								<div class="star"></div>
+							</div>
+							<div class="book-cover-placeholder">
+								<img
+									class="book-cover-img"
+									src="{css,js,images}/photos/Screenshot 2026-04-10 152710.png"
+									alt="Joe at sea book cover"
+								/>
+							</div>
+						</div>
+					</div>
+
+					<div class="about-text reveal-right">
+						<h2>A Journey back home!</h2>
+						<p>
+							Joy at Sea is the story of a HAPPY ship who loses her purpose!
+							Through patience, bravery and resilience. Joy discovers that
+							working together with her family on a new mission helps her regain
+							her purpose once more!
+						</p>
+
+						<h2>New characters to fall in love with</h2>
+						<a href="shop.html" class="btn btn-primary" style="margin-top: 12px"
+							>Get Your Copy 🛒</a
+						>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===== STATS STRIP ===== -->
+		<div class="stats-strip">
+			<div class="stats-strip-bg"></div>
+			<div class="stats-inner">
+				<div class="stat-item reveal">
+					<span class="stat-number" data-target="5000" data-suffix="+">0</span>
+					<span class="stat-label">Happy Readers</span>
+				</div>
+				<div class="stat-item reveal">
+					<span class="stat-number" data-target="48" data-suffix="">0</span>
+					<span class="stat-label">Colorful Pages</span>
+				</div>
+				<div class="stat-item reveal">
+					<span class="stat-number" data-target="120" data-suffix="+">0</span>
+					<span class="stat-label">5-Star Reviews</span>
+				</div>
+				<div class="stat-item reveal">
+					<span class="stat-number" data-target="12" data-suffix="">0</span>
+					<span class="stat-label">Countries Reached</span>
+				</div>
+			</div>
+		</div>
+
+		<!-- Wave up before featured -->
+		<div class="wave-divider">
+			<svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="#fffdf5">
+				<path d="M0,40 C480,0 960,80 1440,40 L1440,0 L0,0 Z" />
+			</svg>
+		</div>
+
+		<!-- ===== FEATURED PRODUCTS (Preview) ===== -->
+		<section id="shop" style="position: relative">
+			<!-- To use your own background: add background-image via inline style or replace the bg div -->
+			<div
+				style="position: absolute; inset: 0; background: #fffdf5; z-index: 0"
+			></div>
+			<div class="section-inner" style="position: relative; z-index: 1">
+				<h2 class="section-title reveal" style="color: var(--blue-dark)">
+					Our Books
+				</h2>
+				<p class="section-subtitle reveal">
+					Magical stories for little adventurers — find your favorite and order
+					directly from Amazon!
+				</p>
+
+				<div class="shop-grid">
+					<!-- PRODUCT 1 -->
+					<div class="product-card reveal">
+						<div class="product-badge">Bestseller ⭐</div>
+						<div class="product-img-placeholder"></div>
+						<!-- Replace above with: <img class="product-img" src="images/product1.jpg" alt="Joy at Sea Vol 1"> -->
+						<div class="product-info">
+							<h3>Joy at Sea</h3>
+							<p>
+								The first book in the Joy at Sea Series. Teaches teamwork,
+								patience and overcoming obstacles.
+							</p>
+							<div class="product-footer">
+								<span class="product-price">$19.99</span>
+								<a
+									href="YOUR_AMAZON_LINK_HERE"
+									target="_blank"
+									rel="noopener"
+									class="btn-amazon"
+									>🛒 Amazon</a
+								>
+							</div>
+						</div>
+					</div>
+
+					<!-- PRODUCT 2 -->
+					<div class="product-card reveal">
+						<div class="product-badge">Coming in late 2026</div>
+						<div
+							class="product-img-placeholder"
+							style="background: linear-gradient(135deg, var(--red), #8f2c21)"
+						></div>
+						<div class="product-info">
+							<h3>Sunny at Sea</h3>
+							<p>
+								Sunny is a hardworking and competent ship, who never asks for
+								help. This book teaches that friends are here to help us be
+								brave when we get sick and need a rest.
+							</p>
+							<div class="product-footer">
+								<span class="product-price">$11.99</span>
+								<a
+									href="YOUR_AMAZON_LINK_HERE"
+									target="_blank"
+									rel="noopener"
+									class="btn-amazon"
+									>🛒 Amazon</a
+								>
+							</div>
+						</div>
+					</div>
+
+					<!-- PRODUCT 3 -->
+					<div class="product-card reveal">
+						<div class="product-badge">Coming early 2027</div>
+						<div
+							class="product-img-placeholder"
+							style="background: linear-gradient(135deg, #c9b630, #a08a10)"
+						>
+							<div class="p-emoji"></div>
+							<div class="p-text"></div>
+						</div>
+						<div class="product-info">
+							<h3>Grace at Sea</h3>
+							<p>
+								Grace is an older, smaller ship who wonders if she still has
+								anything to offer. Big Max is the newest, biggest ship at sea.
+								Grace and Big Max learn they were both built to navigate rough
+								waters no matter their age or size. This book teaches that we
+								all have a place in this world for our specific gifts.
+							</p>
+							<div class="product-footer">
+								<span class="product-price">$12.99</span>
+								<a
+									href="YOUR_AMAZON_LINK_HERE"
+									target="_blank"
+									rel="noopener"
+									class="btn-amazon"
+									>🛒 Amazon</a
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div style="text-align: center; margin-top: 48px" class="reveal">
+					<a href="shop.html" class="btn btn-secondary">See All Books →</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Wave before testimonials -->
+		<div class="wave-divider">
+			<svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="var(--blue)">
+				<path d="M0,40 C360,80 1080,0 1440,40 L1440,0 L0,0 Z" />
+			</svg>
+		</div>
+
+		<!-- ===== TESTIMONIALS ===== -->
+		<section class="testimonials" id="reviews">
+			<div class="testimonials-bg"></div>
+			<div class="bubbles"></div>
+			<div class="section-inner">
+				<h2 class="section-title reveal">What Parents Say 💬</h2>
+				<p class="section-subtitle reveal">
+					Thousands of families have set sail with Joy — here's what they think!
+				</p>
+
+				<div class="testimonials-grid">
+					<div class="testimonial-card reveal">
+						<div class="testimonial-stars">★★★★★</div>
+						<p class="testimonial-text">
+							"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+							eiusmod tempor incididunt ut labore. My daughter absolutely loves
+							this book!"
+						</p>
+						<div class="testimonial-author">
+							<div class="author-avatar"></div>
+							<div class="author-info">
+								<strong>Sarah M.</strong>
+								<span>Mom of 2, USA</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="testimonial-card reveal">
+						<div class="testimonial-stars">★★★★★</div>
+						<p class="testimonial-text">
+							"Excepteur sint occaecat cupidatat non proident. The illustrations
+							are stunning and my son asks for it every night at bedtime!"
+						</p>
+						<div class="testimonial-author">
+							<div class="author-avatar"></div>
+							<div class="author-info">
+								<strong>James K.</strong>
+								<span>Dad of 3, UK</span>
+							</div>
+						</div>
+					</div>
+
+					<div class="testimonial-card reveal">
+						<div class="testimonial-stars">★★★★★</div>
+						<p class="testimonial-text">
+							"Duis aute irure dolor in reprehenderit in voluptate. Such a
+							magical book — the animations make it truly unique and special!"
+						</p>
+						<div class="testimonial-author">
+							<div class="author-avatar"></div>
+							<div class="author-info">
+								<strong>Maria L.</strong>
+								<span>Kindergarten Teacher</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Wave after testimonials -->
+		<div class="wave-divider">
+			<svg
+				viewBox="0 0 1440 80"
+				preserveAspectRatio="none"
+				fill="var(--text-dark)"
+			>
+				<path d="M0,40 C360,0 1080,80 1440,40 L1440,0 L0,0 Z" />
+			</svg>
+		</div>
+
+		<!-- ===== FOOTER / CONTACT ===== -->
+		<footer class="footer" id="contact">
+			<div class="footer-inner">
+				<div class="footer-grid">
+					<div class="footer-brand reveal-left">
+						<a href="index.html" class="logo">⛵ Joy at Sea</a>
+						<p>
+							Joy at Sea and friends is a registered trademark of Joy at Sea
+							LLC. No part of the images and texts may be used without prior
+							written permission.
+						</p>
+						<div class="social-links">
+							<a href="#" class="social-link" aria-label="Facebook"></a>
+							<a href="#" class="social-link" aria-label="Instagram"></a>
+							<a href="#" class="social-link" aria-label="TikTok"></a>
+							<a href="#" class="social-link" aria-label="YouTube">▶</a>
+						</div>
+					</div>
+
+					<div class="footer-col reveal">
+						<h4>Pages</h4>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about.html">About Us</a></li>
+							<li><a href="shop.html">Shop</a></li>
+							<li><a href="#contact">Contact</a></li>
+						</ul>
+					</div>
+
+					<div class="footer-col reveal-right">
+						<h4>Get in Touch</h4>
+						<ul>
+							<li>
+								<a href="mailto:hello@joyatsea.com"
+									>✉️ findingjoyatsea@gmail.com
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="footer-bottom">
+					<p>© 2026 Joy at Sea. All rights reserved.</p>
+					<p>Made with ❤️ for little adventurers by KeyCodeAgency</p>
+				</div>
+			</div>
+		</footer>
+
+		<script src="js/main.js"></script>
+	</body>
+</html>

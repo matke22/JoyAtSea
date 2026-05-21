@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>About Us – Joy at Sea</title>
+		<meta
+			name="description"
+			content="Meet the team behind Joy at Sea children's books!"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+		<link
+			rel="icon"
+			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛵</text></svg>"
+		/>
+		<style>
+			/* About-page extras */
+			.story-section {
+				position: relative;
+			}
+
+			.story-section-bg {
+				position: absolute;
+				inset: 0;
+				background: #fffdf5;
+				z-index: 0;
+			}
+
+			.story-section .section-inner {
+				position: relative;
+				z-index: 1;
+			}
+
+			.story-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 64px;
+				align-items: center;
+				margin-bottom: 80px;
+			}
+
+			.story-grid.reverse {
+				direction: rtl;
+			}
+			.story-grid.reverse > * {
+				direction: ltr;
+			}
+
+			.story-img {
+				border-radius: var(--radius-lg);
+				overflow: hidden;
+				aspect-ratio: 4/3;
+				background: linear-gradient(
+					135deg,
+					var(--blue) 0%,
+					var(--blue-dark) 100%
+				);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 5rem;
+				box-shadow: var(--shadow-lg);
+				transition: transform 0.4s ease;
+			}
+
+			.story-img:hover {
+				transform: scale(1.02) rotate(1deg);
+			}
+
+			.story-text h2 {
+				font-size: clamp(2rem, 4vw, 3rem);
+				color: var(--blue-dark);
+				margin-bottom: 16px;
+			}
+
+			.story-text p {
+				font-size: 1.05rem;
+				line-height: 1.8;
+				color: var(--text-mid);
+				margin-bottom: 14px;
+			}
+
+			.values-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+				gap: 28px;
+				margin-top: 56px;
+			}
+
+			.value-card {
+				background: white;
+				border-radius: var(--radius);
+				padding: 32px 24px;
+				text-align: center;
+				box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+				border: 3px solid transparent;
+				transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+			}
+
+			.value-card:hover {
+				border-color: var(--yellow);
+				transform: translateY(-8px);
+				box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+			}
+
+			.value-icon {
+				font-size: 2.8rem;
+				display: block;
+				margin-bottom: 14px;
+			}
+
+			.value-card h3 {
+				font-size: 1.4rem;
+				color: var(--text-dark);
+				margin-bottom: 10px;
+			}
+
+			.value-card p {
+				font-size: 0.9rem;
+				color: var(--text-mid);
+				line-height: 1.6;
+			}
+
+			.timeline {
+				position: relative;
+				padding: 40px 0;
+				max-width: 800px;
+				margin: 0 auto;
+			}
+
+			.timeline::before {
+				content: "";
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				top: 0;
+				bottom: 0;
+				width: 4px;
+				background: linear-gradient(
+					to bottom,
+					var(--blue),
+					var(--yellow),
+					var(--red)
+				);
+				border-radius: 4px;
+			}
+
+			.timeline-item {
+				display: flex;
+				justify-content: flex-end;
+				padding-right: calc(50% + 40px);
+				margin-bottom: 48px;
+				position: relative;
+			}
+
+			.timeline-item:nth-child(even) {
+				justify-content: flex-start;
+				padding-right: 0;
+				padding-left: calc(50% + 40px);
+			}
+
+			.timeline-dot {
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 20px;
+				height: 20px;
+				background: var(--yellow);
+				border: 4px solid var(--blue);
+				border-radius: 50%;
+				top: 20px;
+				z-index: 1;
+			}
+
+			.timeline-card {
+				background: white;
+				border-radius: var(--radius);
+				padding: 20px 24px;
+				max-width: 320px;
+				box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+				border: 2px solid rgba(93, 170, 200, 0.2);
+				transition: all 0.3s ease;
+			}
+
+			.timeline-card:hover {
+				transform: scale(1.03);
+				box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+			}
+
+			.timeline-year {
+				font-family: "Caveat", cursive;
+				font-size: 1.6rem;
+				color: var(--red);
+				font-weight: 700;
+				display: block;
+				margin-bottom: 6px;
+			}
+
+			.timeline-card h3 {
+				font-size: 1.2rem;
+				color: var(--text-dark);
+				margin-bottom: 6px;
+			}
+
+			.timeline-card p {
+				font-size: 0.9rem;
+				color: var(--text-mid);
+				line-height: 1.5;
+			}
+
+			@media (max-width: 768px) {
+				.story-grid {
+					grid-template-columns: 1fr;
+					gap: 32px;
+				}
+				.story-grid.reverse {
+					direction: ltr;
+				}
+
+				.timeline::before {
+					left: 20px;
+					transform: none;
+				}
+				.timeline-item {
+					padding-right: 0;
+					padding-left: 56px;
+					justify-content: flex-start;
+				}
+				.timeline-item:nth-child(even) {
+					padding-left: 56px;
+				}
+				.timeline-dot {
+					left: 12px;
+					transform: none;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- ===== NAVIGATION ===== -->
+		<nav id="navbar">
+			<a href="index.html" class="nav-logo"> <span>⛵</span> Joy at Sea </a>
+			<button class="hamburger" aria-label="Menu">
+				<span></span><span></span><span></span>
+			</button>
+			<ul class="nav-links">
+				<li><a href="index.html#about">About</a></li>
+				<li><a href="shop.html">Shop</a></li>
+				<li><a href="about.html" class="active">About Us</a></li>
+				<li><a href="index.html#contact">Contact</a></li>
+				<li><a href="shop.html" class="btn-nav">Order Now 🛒</a></li>
+			</ul>
+		</nav>
+
+		<!-- ===== PAGE HEADER ===== -->
+		<header class="page-header">
+			<div class="page-header-bg"></div>
+			<!-- Replace page-header-bg div with your own background image:
+         style="background-image:url('images/about-bg.jpg'); background-size:cover;" on the header element -->
+			<div class="floating-elements">
+				<span class="float-el">👋</span>
+				<span class="float-el">🌊</span>
+				<span class="float-el">✍️</span>
+				<span class="float-el">🎨</span>
+				<span class="float-el">💙</span>
+			</div>
+			<div class="page-header-content">
+				<h1>About Us 👋</h1>
+				<p>The dreamers and creators behind Joy at Sea</p>
+			</div>
+		</header>
+
+		<!-- Wave -->
+		<div class="wave-divider">
+			<svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="#fffdf5">
+				<path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" />
+			</svg>
+		</div>
+
+		<!-- ===== OUR STORY ===== -->
+		<section class="story-section">
+			<div class="story-section-bg"></div>
+			<div class="section-inner">
+				<h2 class="section-title reveal" style="color: var(--blue-dark)">
+					Our Story 🌊
+				</h2>
+				<p class="section-subtitle reveal">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+					eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				</p>
+
+				<div class="story-grid">
+					<div class="story-img reveal-left"></div>
+					<div class="story-text reveal-right">
+						<h2>How It All Began</h2>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+							enim ad minim veniam, quis nostrud exercitation.
+						</p>
+						<p>
+							Duis aute irure dolor in reprehenderit in voluptate velit esse
+							cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+							cupidatat non proident sunt in culpa.
+						</p>
+						<p>
+							Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+							accusantium doloremque laudantium, totam rem aperiam eaque ipsa
+							quae ab illo inventore.
+						</p>
+					</div>
+				</div>
+
+				<div class="story-grid reverse">
+					<div
+						class="story-img reveal-right"
+						style="
+							background: linear-gradient(
+								135deg,
+								var(--yellow),
+								var(--yellow-dark)
+							);
+						"
+					>
+						🎨
+					</div>
+					<div class="story-text reveal-left">
+						<h2>Our Creative Process</h2>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. At vero
+							eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+							praesentium voluptatum.
+						</p>
+						<p>
+							Nam libero tempore, cum soluta nobis est eligendi optio cumque
+							nihil impedit quo minus id quod maxime placeat facere possimus,
+							omnis voluptas assumenda est.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ===== MISSION ===== -->
+		<section class="mission-section">
+			<div class="mission-section-bg"></div>
+			<div class="section-inner">
+				<div class="mission-content">
+					<h2 class="section-title reveal" style="color: var(--text-dark)">
+						Our Mission
+					</h2>
+					<p class="big-quote reveal">
+						“Our mission at Finding Joy at Sea is to help families discover JOY
+						in the journeys of life. Through our books, podcasts and products,
+						we provide the compass that points them to JOY through both stormy
+						seas and smooth sailings. We believe travel is the catalyst that
+						makes life’s destinations truly worthwhile.”
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- Wave -->
+		<div class="wave-divider">
+			<svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="#fffdf5">
+				<path d="M0,40 C480,0 960,80 1440,40 L1440,0 L0,0 Z" />
+			</svg>
+		</div>
+
+		<!-- ===== TEAM ===== -->
+		<section class="story-section">
+			<div class="story-section-bg"></div>
+			<div class="section-inner">
+				<h2 class="section-title reveal" style="color: var(--blue-dark)">
+					Meet the Team
+				</h2>
+				<p class="section-subtitle reveal">
+					The wonderful humans who pour their hearts into every page
+				</p>
+
+				<div class="team-grid">
+					<div class="team-card reveal">
+						<div class="team-avatar"></div>
+						<h3>Laura Fraser</h3>
+						<p class="role">Author, Creator and Podcast Host</p>
+						<p>
+							With over two decades of experience in the cruise industry, Laura
+							brings her creative storytelling abilities to Joy at Sea and
+							Friends. Laura believes life’s biggest lessons can always bring us
+							closer to Joy in our daily journey.
+						</p>
+					</div>
+
+					<div class="team-card reveal">
+						<div
+							class="team-avatar"
+							style="
+								background: linear-gradient(
+									135deg,
+									var(--yellow),
+									var(--yellow-dark)
+								);
+							"
+						></div>
+						<h3>Aleksandra Jankovic</h3>
+						<p class="role">Illustrator and Design Director</p>
+						<p>
+							Aleksandra has been an artist as long as she can remember. Drawing
+							inspiration from her time as a crew member, she brings life and
+							incredible expression to Joy, Sunny, Grace and Big Max. Her
+							characters connect across generations. Aleksandra feels that
+							traveling can open kids' eyes to a lifetime of learning and
+							adventure.
+						</p>
+					</div>
+
+					<!-- <div class="team-card reveal">
+						<div
+							class="team-avatar"
+							style="
+								background: linear-gradient(
+									135deg,
+									var(--red),
+									var(--red-dark)
+								);
+							"
+						></div>
+						<h3>Lorem Ipsum</h3>
+						<p class="role">Animation Director</p>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute
+							irure dolor in reprehenderit in voluptate velit esse cillum.
+						</p>
+					</div> -->
+				</div>
+			</div>
+		</section>
+
+		<!-- Wave before timeline -->
+		<div class="wave-divider">
+			<svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="var(--blue)">
+				<path d="M0,40 C360,0 1080,80 1440,40 L1440,0 L0,0 Z" />
+			</svg>
+		</div>
+
+		<!-- ===== TIMELINE ===== -->
+		<section class="testimonials">
+			<div class="testimonials-bg"></div>
+			<div class="bubbles"></div>
+			<div class="section-inner">
+				<h2 class="section-title reveal">Our Journey ⚓</h2>
+				<p class="section-subtitle reveal">
+					From a small idea to a worldwide adventure
+				</p>
+
+				<div class="timeline">
+					<div class="timeline-item reveal">
+						<div class="timeline-dot"></div>
+						<div class="timeline-card">
+							<span class="timeline-year">2003</span>
+							<h3>
+								Laura joined her first ship as crew to see the world. What was
+								supposed to last a year began a lifelong love of the industry
+								and corporate career.
+							</h3>
+						</div>
+					</div>
+
+					<div class="timeline-item reveal">
+						<div class="timeline-dot"></div>
+						<div class="timeline-card">
+							<span class="timeline-year">2020</span>
+							<h3>
+								The world changed forever. The cruise industry stopped
+								overnight. Like most in the industry Laura had to pivot her
+								career.
+							</h3>
+						</div>
+					</div>
+
+					<div class="timeline-item reveal">
+						<div class="timeline-dot"></div>
+						<div class="timeline-card">
+							<span class="timeline-year">2023</span>
+							<h3>
+								Laura takes her first cruise post pandemic industry shutdown
+								with her family. While teaching her son to swim onboard with her
+								husband and fellow former crew member Hayden, she gets the
+								feeling the ship is happy to have people back onboard! The idea
+								for Joy at Sea is born! Laura wonders who she can find to bring
+								the illustrations to life…
+							</h3>
+						</div>
+					</div>
+
+					<div class="timeline-item reveal">
+						<div class="timeline-dot"></div>
+						<div class="timeline-card">
+							<span class="timeline-year">2023</span>
+							<h3>
+								Aleksandra gets the opportunity to go work on ships with her
+								Fiancé and fellow crew member Srdjan. She is excited to see the
+								world and wonders how this adventure will change her life…
+							</h3>
+						</div>
+					</div>
+
+					<div class="timeline-item reveal">
+						<div class="timeline-dot"></div>
+						<div class="timeline-card">
+							<span class="timeline-year">2024</span>
+							<h3>
+								Laura and Aleksandra meet in Cancun, Mexico by chance! While
+								enjoying possibly the best omelets of their lives and discussing
+								their goals realize they can partner to bring Joy at Sea and all
+								her friends to life, together!
+							</h3>
+						</div>
+					</div>
+					<div class="timeline-item reveal">
+						<div class="timeline-dot"></div>
+						<div class="timeline-card">
+							<span class="timeline-year">2025</span>
+							<h3>
+								From opposite corners of the world Laura works on the story of
+								JOY and Aleksandra works on the illustrations. When Laura sees
+								the first illustration, she is overJOYED with her!
+							</h3>
+						</div>
+					</div>
+					<div class="timeline-item reveal">
+						<div class="timeline-dot"></div>
+						<div class="timeline-card">
+							<span class="timeline-year">2026</span>
+							<h3>
+								Joy at Sea is released. The Finding Joy at Sea Podcast is
+								launched. The ABC’s at Sea cards are released.
+							</h3>
+						</div>
+					</div>
+					<div class="timeline-item reveal">
+						<div class="timeline-dot"></div>
+						<div class="timeline-card">
+							<span class="timeline-year">2027</span>
+							<h3>Sunny at Sea will be published and released</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Wave before values -->
+		<div class="wave-divider">
+			<svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="#fffdf5">
+				<path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" />
+			</svg>
+		</div>
+
+		<!-- ===== VALUES ===== -->
+		<section class="story-section">
+			<div class="story-section-bg"></div>
+			<div class="section-inner">
+				<h2 class="section-title reveal" style="color: var(--blue-dark)">
+					What We Believe In 💛
+				</h2>
+				<p class="section-subtitle reveal">
+					The values that guide every story we create
+				</p>
+
+				<div class="values-grid">
+					<div class="value-card reveal">
+						<span class="value-icon">🌈</span>
+						<h2>
+							We believe travel and adventure help develop the imaginations of
+							kids and adults alike!
+						</h2>
+					</div>
+					<div class="value-card reveal">
+						<span class="value-icon">🤝</span>
+						<h2>
+							Lifelong friendships are made when we travel and it's our family
+							and friends that help us out when we are in rough waters.
+						</h2>
+					</div>
+					<div class="value-card reveal">
+						<span class="value-icon">🌊</span>
+						<h2>
+							Life is the ultimate adventure, and Joy is found in the journey.
+						</h2>
+					</div>
+					<div class="value-card reveal">
+						<span class="value-icon">💡</span>
+						<h2>
+							Life will have hard lessons. Through Joy, Sunny, Grace and Big Max
+							we learn that we can get through hard times.
+						</h2>
+					</div>
+				</div>
+
+				<div style="text-align: center; margin-top: 56px" class="reveal">
+					<a href="shop.html" class="btn btn-primary">Explore Our Books 📚</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Wave before footer -->
+		<div class="wave-divider">
+			<svg
+				viewBox="0 0 1440 80"
+				preserveAspectRatio="none"
+				fill="var(--text-dark)"
+			>
+				<path d="M0,40 C360,0 1080,80 1440,40 L1440,0 L0,0 Z" />
+			</svg>
+		</div>
+
+		<!-- ===== FOOTER ===== -->
+		<footer class="footer" id="contact">
+			<div class="footer-inner">
+				<div class="footer-grid">
+					<div class="footer-brand reveal-left">
+						<a href="index.html" class="logo">⛵ Joy at Sea</a>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Creating
+							magical ocean adventures for children everywhere.
+						</p>
+						<div class="social-links">
+							<a href="#" class="social-link" aria-label="Facebook">📘</a>
+							<a href="#" class="social-link" aria-label="Instagram">📸</a>
+							<a href="#" class="social-link" aria-label="TikTok">🎵</a>
+							<a href="#" class="social-link" aria-label="YouTube">▶️</a>
+						</div>
+					</div>
+
+					<div class="footer-col reveal">
+						<h4>Pages</h4>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about.html">About Us</a></li>
+							<li><a href="shop.html">Shop</a></li>
+							<li><a href="index.html#contact">Contact</a></li>
+						</ul>
+					</div>
+
+					<div class="footer-col reveal-right">
+						<h4>Get in Touch</h4>
+						<ul>
+							<li>
+								<a href="mailto:hello@joyatsea.com">✉️ hello@joyatsea.com</a>
+							</li>
+							<li><a href="#">📍 Your Location Here</a></li>
+							<li><a href="#">📞 +1 (000) 000-0000</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="footer-bottom">
+					<p>© 2026 Joy at Sea. All rights reserved.</p>
+					<p>Made with ❤️ for little adventurers by KeyCodeAgency</p>
+				</div>
+			</div>
+		</footer>
+
+		<script src="js/main.js"></script>
+	</body>
+</html>

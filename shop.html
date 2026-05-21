@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Shop – Joy at Sea Books</title>
+		<meta
+			name="description"
+			content="Browse all Joy at Sea children's books and order on Amazon!"
+		/>
+		<link rel="stylesheet" href="css/style.css" />
+		<link
+			rel="icon"
+			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛵</text></svg>"
+		/>
+		<style>
+			/* Shop-specific extras */
+			.filter-bar {
+				display: flex;
+				gap: 12px;
+				justify-content: center;
+				flex-wrap: wrap;
+				margin-bottom: 48px;
+			}
+
+			.filter-btn {
+				font-family: "Caveat", cursive;
+				font-size: 1.1rem;
+				font-weight: 600;
+				padding: 8px 22px;
+				border-radius: 50px;
+				border: 3px solid var(--blue);
+				background: transparent;
+				color: var(--blue-dark);
+				cursor: pointer;
+				transition: all 0.3s ease;
+			}
+
+			.filter-btn:hover,
+			.filter-btn.active {
+				background: var(--blue);
+				color: white;
+				transform: translateY(-2px);
+				box-shadow: 0 6px 16px rgba(93, 170, 200, 0.35);
+			}
+
+			.shop-page-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+				gap: 36px;
+			}
+
+			.product-card-lg {
+				border-radius: var(--radius-lg);
+				overflow: hidden;
+				background: white;
+				box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+				border: 3px solid transparent;
+				transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+				display: flex;
+				flex-direction: column;
+			}
+
+			.product-card-lg:hover {
+				transform: translateY(-10px);
+				border-color: var(--yellow);
+				box-shadow: 0 24px 56px rgba(0, 0, 0, 0.16);
+			}
+
+			.product-card-lg .product-img-placeholder {
+				aspect-ratio: 3/4;
+			}
+
+			.product-card-lg .product-info {
+				flex: 1;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.product-card-lg .product-info p {
+				flex: 1;
+			}
+
+			.product-card-lg .product-footer {
+				margin-top: auto;
+			}
+
+			.product-meta {
+				display: flex;
+				gap: 8px;
+				flex-wrap: wrap;
+				margin-bottom: 10px;
+			}
+
+			.product-tag {
+				font-size: 0.75rem;
+				font-weight: 700;
+				padding: 3px 10px;
+				border-radius: 50px;
+				background: rgba(93, 170, 200, 0.12);
+				color: var(--blue-dark);
+				border: 1px solid rgba(93, 170, 200, 0.3);
+			}
+
+			.product-stars {
+				color: var(--yellow-dark);
+				font-size: 0.85rem;
+				margin-bottom: 8px;
+			}
+
+			.shop-cta-banner {
+				margin-top: 80px;
+				border-radius: var(--radius-lg);
+				padding: 56px 40px;
+				text-align: center;
+				background: linear-gradient(
+					135deg,
+					var(--blue) 0%,
+					var(--blue-dark) 100%
+				);
+				position: relative;
+				overflow: hidden;
+			}
+
+			.shop-cta-banner::before {
+				content: "🌊";
+				position: absolute;
+				font-size: 8rem;
+				opacity: 0.08;
+				bottom: -20px;
+				left: -20px;
+			}
+
+			.shop-cta-banner::after {
+				content: "⛵";
+				position: absolute;
+				font-size: 8rem;
+				opacity: 0.08;
+				top: -20px;
+				right: -20px;
+			}
+
+			.shop-cta-banner h2 {
+				font-size: clamp(2rem, 4vw, 3rem);
+				color: white;
+				margin-bottom: 12px;
+				position: relative;
+			}
+
+			.shop-cta-banner p {
+				color: rgba(255, 255, 255, 0.85);
+				max-width: 500px;
+				margin: 0 auto 28px;
+				line-height: 1.7;
+			}
+
+			@media (max-width: 640px) {
+				.shop-page-grid {
+					grid-template-columns: 1fr 1fr;
+					gap: 20px;
+				}
+			}
+
+			@media (max-width: 420px) {
+				.shop-page-grid {
+					grid-template-columns: 1fr;
+					max-width: 320px;
+					margin: 0 auto;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- ===== NAVIGATION ===== -->
+		<nav id="navbar">
+			<a href="index.html" class="nav-logo"> <span>⛵</span> Joy at Sea </a>
+			<button class="hamburger" aria-label="Menu">
+				<span></span><span></span><span></span>
+			</button>
+			<ul class="nav-links">
+				<li><a href="index.html#about">About</a></li>
+				<li><a href="shop.html" class="active">Shop</a></li>
+				<li><a href="about.html">About Us</a></li>
+				<li><a href="index.html#contact">Contact</a></li>
+				<li><a href="shop.html" class="btn-nav">Order Now 🛒</a></li>
+			</ul>
+		</nav>
+
+		<!-- ===== PAGE HEADER ===== -->
+		<header class="page-header">
+			<div class="page-header-bg"></div>
+			<!-- Replace page-header-bg div with your own background image using:
+         style="background-image:url('images/shop-bg.jpg'); background-size:cover; background-position:center;" on the header element -->
+			<div class="floating-elements">
+				<span class="float-el">📚</span>
+				<span class="float-el">🌊</span>
+				<span class="float-el">⭐</span>
+				<span class="float-el">🎨</span>
+				<span class="float-el">✨</span>
+			</div>
+			<div class="page-header-content">
+				<h1>Our Books</h1>
+				<p>Joy at sea — order directly from Amazon!</p>
+			</div>
+		</header>
+
+		<!-- Wave -->
+		<div class="wave-divider">
+			<svg viewBox="0 0 1440 80" preserveAspectRatio="none" fill="#fffdf5">
+				<path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" />
+			</svg>
+		</div>
+
+		<!-- ===== SHOP SECTION ===== -->
+		<section style="position: relative">
+			<div
+				style="position: absolute; inset: 0; background: #fffdf5; z-index: 0"
+			></div>
+			<div class="section-inner" style="position: relative; z-index: 1">
+				<!-- Filter bar -->
+				<div class="filter-bar reveal">
+					<button
+						class="filter-btn active"
+						onclick="filterProducts('all', this)"
+					>
+						All Books
+					</button>
+					<button
+						class="filter-btn"
+						onclick="filterProducts('adventure', this)"
+					>
+						Adventure 🌊
+					</button>
+					<button class="filter-btn" onclick="filterProducts('animals', this)">
+						Sea Animals 🐬
+					</button>
+					<button class="filter-btn" onclick="filterProducts('learning', this)">
+						Learning 📖
+					</button>
+				</div>
+
+				<!-- Products Grid -->
+				<div class="shop-page-grid" id="productsGrid">
+					<!-- PRODUCT 1 -->
+					<div class="product-card-lg reveal" data-category="adventure">
+						<div style="position: relative">
+							<div class="product-badge">Bestseller ⭐</div>
+							<div class="product-img-placeholder">
+								<div class="p-emoji"></div>
+								<div class="p-text">Joy at Sea – Vol. 1</div>
+							</div>
+							<!-- Replace above with: <img class="product-img" src="images/product1.jpg" alt="Joy at Sea Vol 1"> -->
+						</div>
+						<div class="product-info">
+							<div style="padding: 20px 20px 0">
+								<div class="product-stars">★★★★★ (128 reviews)</div>
+								<div class="product-meta">
+									<span class="product-tag">Adventure</span>
+									<span class="product-tag">Ages 3–8</span>
+								</div>
+							</div>
+							<div style="padding: 0 20px 20px">
+								<h3>Joy at Sea</h3>
+								<p>
+									The first book in the Joy at Sea Series. Teaches teamwork,
+									patience and overcoming obstacles.
+								</p>
+								<div class="product-footer">
+									<span class="product-price">$19.99</span>
+									<a
+										href="YOUR_AMAZON_LINK_HERE"
+										target="_blank"
+										rel="noopener"
+										class="btn-amazon"
+										>🛒 Order on Amazon</a
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- PRODUCT 2 -->
+					<div class="product-card-lg reveal" data-category="animals">
+						<div style="position: relative">
+							<div class="product-badge">Coming in late 2026</div>
+							<div
+								class="product-img-placeholder"
+								style="background: linear-gradient(135deg, var(--red), #8f2c21)"
+							>
+								<div class="p-emoji"></div>
+								<div class="p-text">Sunny at Sea cover here</div>
+							</div>
+						</div>
+						<div class="product-info">
+							<div style="padding: 20px 20px 0">
+								<div class="product-stars">★★★★★ (84 reviews)</div>
+								<div class="product-meta">
+									<span class="product-tag">Sea Animals</span>
+									<span class="product-tag">Ages 2–6</span>
+								</div>
+							</div>
+							<div style="padding: 0 20px 20px">
+								<h3>Sunny at Sea</h3>
+								<p>
+									Sunny is a hardworking and competent ship, who never asks for
+									help. This book teaches that friends are here to help us be
+									brave when we get sick and need a rest.
+								</p>
+								<div class="product-footer">
+									<span class="product-price">$11.99</span>
+									<a
+										href="YOUR_AMAZON_LINK_HERE"
+										target="_blank"
+										rel="noopener"
+										class="btn-amazon"
+										>🛒 Order on Amazon</a
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- PRODUCT 3 -->
+					<div class="product-card-lg reveal" data-category="animals">
+						<div style="position: relative">
+							<div
+								class="product-img-placeholder"
+								style="background: linear-gradient(135deg, #c9b630, #8a7010)"
+							>
+								<div class="p-emoji"></div>
+								<div class="p-text">Grace at Sea</div>
+							</div>
+						</div>
+						<div class="product-info">
+							<div style="padding: 20px 20px 0">
+								<div class="product-stars">★★★★☆ (62 reviews)</div>
+								<div class="product-meta">
+									<span class="product-tag">Sea Animals</span>
+									<span class="product-tag">Ages 3–7</span>
+								</div>
+							</div>
+							<div style="padding: 0 20px 20px">
+								<h3>Grace at Sea</h3>
+								<p>
+									Grace is an older, smaller ship who wonders if she still has
+									anything to offer. Big Max is the newest, biggest ship at sea.
+									Grace and Big Max learn they were both built to navigate rough
+									waters no matter their age or size. This book teaches that we
+									all have a place in this world for our specific gifts.
+								</p>
+								<div class="product-footer">
+									<span class="product-price">$12.99</span>
+									<a
+										href="YOUR_AMAZON_LINK_HERE"
+										target="_blank"
+										rel="noopener"
+										class="btn-amazon"
+										>🛒 Order on Amazon</a
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- PRODUCT 5 -->
+					<div class="product-card-lg reveal" data-category="learning">
+						<div style="position: relative">
+							<div class="product-badge">Popular 💙</div>
+							<div
+								class="product-img-placeholder"
+								style="background: linear-gradient(135deg, #8a5cc8, #5a3a98)"
+							>
+								<div class="p-emoji"></div>
+								<div class="p-text">Stars & Waves</div>
+							</div>
+						</div>
+						<div class="product-info">
+							<div style="padding: 20px 20px 0">
+								<div class="product-meta">
+									<span class="product-tag">Learning</span>
+									<span class="product-tag">Ages 3–8</span>
+								</div>
+							</div>
+							<div style="padding: 0 20px 20px">
+								<h3>ABC’s at Sea</h3>
+								<p>
+									This wonderful deck of ABC flashcards is the perfect way to
+									learn all of the new words you will hear at sea! Conveniently
+									packaged for travel, this deck of cards will be fun and
+									educational for the whole family!
+								</p>
+								<div class="product-footer">
+									<span class="product-price">$12.99</span>
+									<a
+										href="YOUR_AMAZON_LINK_HERE"
+										target="_blank"
+										rel="noopener"
+										class="btn-amazon"
+										>🛒 Order on Amazon</a
+									>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- end shop-page-grid -->
+
+				<!-- CTA Banner -->
+				<div class="shop-cta-banner reveal">
+					<h2>Can't Find What You're Looking For?</h2>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Visit our
+						full Amazon storefront for all titles and bundle deals!
+					</p>
+					<a
+						href="YOUR_AMAZON_STOREFRONT_LINK"
+						target="_blank"
+						rel="noopener"
+						class="btn btn-secondary"
+						>Visit Amazon Store 🛒</a
+					>
+				</div>
+			</div>
+		</section>
+
+		<!-- Wave before footer -->
+		<div class="wave-divider">
+			<svg
+				viewBox="0 0 1440 80"
+				preserveAspectRatio="none"
+				fill="var(--text-dark)"
+			>
+				<path d="M0,40 C360,0 1080,80 1440,40 L1440,0 L0,0 Z" />
+			</svg>
+		</div>
+
+		<!-- ===== FOOTER ===== -->
+		<footer class="footer" id="contact">
+			<div class="footer-inner">
+				<div class="footer-grid">
+					<div class="footer-brand">
+						<a href="index.html" class="logo">⛵ Joy at Sea</a>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Creating
+							magical ocean adventures for children everywhere.
+						</p>
+						<div class="social-links">
+							<a href="#" class="social-link" aria-label="Facebook"></a>
+							<a href="#" class="social-link" aria-label="Instagram"></a>
+							<a href="#" class="social-link" aria-label="TikTok"></a>
+							<a href="#" class="social-link" aria-label="YouTube"></a>
+						</div>
+					</div>
+
+					<div class="footer-col">
+						<h4>Pages</h4>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about.html">About Us</a></li>
+							<li><a href="shop.html">Shop</a></li>
+							<li><a href="index.html#contact">Contact</a></li>
+						</ul>
+					</div>
+
+					<div class="footer-col">
+						<h4>Get in Touch</h4>
+						<ul>
+							<li>
+								<a href="mailto:hello@joyatsea.com">✉️ hello@joyatsea.com</a>
+							</li>
+							<li><a href="#">📍 Your Location Here</a></li>
+							<li><a href="#">📞 +1 (000) 000-0000</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="footer-bottom">
+					<p>© 2026 Joy at Sea. All rights reserved.</p>
+					<p>Made with ❤️ for little adventurers by KeyCodeAgency</p>
+				</div>
+			</div>
+		</footer>
+
+		<script src="js/main.js"></script>
+		<script>
+			// Filter functionality
+			function filterProducts(category, btn) {
+				// Update active button
+				document
+					.querySelectorAll(".filter-btn")
+					.forEach((b) => b.classList.remove("active"));
+				btn.classList.add("active");
+
+				// Filter cards
+				document.querySelectorAll(".product-card-lg").forEach((card) => {
+					if (category === "all" || card.dataset.category === category) {
+						card.style.display = "";
+						card.style.animation = "fadeInUp 0.4s ease both";
+					} else {
+						card.style.display = "none";
+					}
+				});
+			}
+		</script>
+	</body>
+</html>
