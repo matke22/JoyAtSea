@@ -12,13 +12,16 @@
 		<!-- Favicon emoji -->
 		<link
 			rel="icon"
-			href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⛵</text></svg>"
+			type="image/png"
+			href="{css,js,images}/photos/joy-logo-80h.png"
 		/>
 	</head>
 	<body>
 		<!-- ===== NAVIGATION ===== -->
 		<nav id="navbar">
-			<a href="index.html" class="nav-logo"> <span>⛵</span> Joy at Sea </a>
+			<a href="index.html" class="nav-logo">
+				<img src="{css,js,images}/photos/joy-text-120w.png" alt="" />
+			</a>
 			<button class="hamburger" aria-label="Menu">
 				<span></span><span></span><span></span>
 			</button>
@@ -33,17 +36,27 @@
 
 		<!-- ===== HERO ===== -->
 		<section class="hero" id="home">
-			<!-- Replace this div with <img> or set background-image via inline style for your own background -->
-			<div class="hero-bg-placeholder"></div>
+			<div class="hero-bg-placeholder">
+				<img
+					class="img-desktop"
+					src="{css,js,images}/photos/Original_Joy.png"
+					alt=""
+				/>
+				<img
+					class="img-mobile"
+					src="{css,js,images}/photos/joy-logo-80h.png"
+					alt=""
+				/>
+			</div>
 
 			<!-- Floating sea elements -->
 			<div class="floating-elements">
-				<span class="float-el">🐬</span>
-				<span class="float-el">🌊</span>
-				<span class="float-el">🐠</span>
-				<span class="float-el">⚓</span>
-				<span class="float-el">🦀</span>
-				<span class="float-el">🐙</span>
+				<img src="{css,js,images}/photos/stiker_01.png" class="float-el" />
+				<img src="{css,js,images}/photos/stiker_02.png" class="float-el" />
+				<img src="{css,js,images}/photos/stiker_03.png" class="float-el" />
+				<img src="{css,js,images}/photos/stiker_04.png" class="float-el" />
+				<img src="{css,js,images}/photos/stiker_05.png" class="float-el" />
+				<img src="{css,js,images}/photos/stiker_06.png" class="float-el" />
 			</div>
 
 			<div class="hero-content">
@@ -93,7 +106,7 @@
 							<div class="book-cover-placeholder">
 								<img
 									class="book-cover-img"
-									src="{css,js,images}/photos/Screenshot 2026-04-10 152710.png"
+									src="{css,js,images}/photos/Joy At Sea Cover.png"
 									alt="Joe at sea book cover"
 								/>
 							</div>
@@ -168,6 +181,11 @@
 					<div class="product-card reveal">
 						<div class="product-badge">Bestseller ⭐</div>
 						<div class="product-img-placeholder"></div>
+						<img
+							class="product-img"
+							src="{css,js,images}/photos/Joy At Sea Cover.png"
+							alt="Joy at Sea"
+						/>
 						<!-- Replace above with: <img class="product-img" src="images/product1.jpg" alt="Joy at Sea Vol 1"> -->
 						<div class="product-info">
 							<h3>Joy at Sea</h3>
@@ -181,8 +199,8 @@
 									href="YOUR_AMAZON_LINK_HERE"
 									target="_blank"
 									rel="noopener"
-									class="btn-amazon"
-									>🛒 Amazon</a
+									class="btn-order"
+									>🛒 Order now</a
 								>
 							</div>
 						</div>
@@ -194,7 +212,13 @@
 						<div
 							class="product-img-placeholder"
 							style="background: linear-gradient(135deg, var(--red), #8f2c21)"
-						></div>
+						>
+							<img
+								class="product-img"
+								src="{css,js,images}/photos/Screenshot 2026-07-09 215942.png"
+								alt="Joy at Sea"
+							/>
+						</div>
 						<div class="product-info">
 							<h3>Sunny at Sea</h3>
 							<p>
@@ -208,8 +232,8 @@
 									href="YOUR_AMAZON_LINK_HERE"
 									target="_blank"
 									rel="noopener"
-									class="btn-amazon"
-									>🛒 Amazon</a
+									class="btn-order"
+									>🛒 Order now</a
 								>
 							</div>
 						</div>
@@ -218,10 +242,12 @@
 					<!-- PRODUCT 3 -->
 					<div class="product-card reveal">
 						<div class="product-badge">Coming early 2027</div>
-						<div
-							class="product-img-placeholder"
-							style="background: linear-gradient(135deg, #c9b630, #a08a10)"
-						>
+						<div class="product-img-placeholder">
+							<img
+								class="product-img"
+								src="{css,js,images}/photos/Joy At Sea Cover.png"
+								alt="Joy at Sea"
+							/>
 							<div class="p-emoji"></div>
 							<div class="p-text"></div>
 						</div>
@@ -240,8 +266,8 @@
 									href="YOUR_AMAZON_LINK_HERE"
 									target="_blank"
 									rel="noopener"
-									class="btn-amazon"
-									>🛒 Amazon</a
+									class="btn-order"
+									>🛒 Order now</a
 								>
 							</div>
 						</div>
@@ -337,7 +363,10 @@
 			<div class="footer-inner">
 				<div class="footer-grid">
 					<div class="footer-brand reveal-left">
-						<a href="index.html" class="logo">⛵ Joy at Sea</a>
+						<img
+							src="{css,js,images}/photos/joy-text-120w.png"
+							alt="JoyAtSea Logo"
+						/>
 						<p>
 							Joy at Sea and friends is a registered trademark of Joy at Sea
 							LLC. No part of the images and texts may be used without prior
@@ -375,7 +404,7 @@
 
 				<div class="footer-bottom">
 					<p>© 2026 Joy at Sea. All rights reserved.</p>
-					<p>Made with ❤️ for little adventurers by KeyCodeAgency</p>
+					<p>Made with ❤️ for little adventurers by Key Code Agency</p>
 				</div>
 			</div>
 		</footer>
