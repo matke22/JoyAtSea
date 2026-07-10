@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Nunito:wght@300;400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap");
 
 /* ===== CSS VARIABLES ===== */
 :root {
@@ -59,12 +60,16 @@ h1,
 h2,
 h3,
 h4 {
-	font-family: "Patrick Hand", cursive;
+	font-family: "Kalam", cursive;
+	font-weight: 700;
+	font-style: normal;
 	line-height: 1.1;
 }
 
 .handwritten {
-	font-family: "Patrick Hand", cursive;
+	font-family: "Kalam", cursive;
+	font-weight: 700;
+	font-style: normal;
 }
 
 /* ===== NAVIGATION ===== */
@@ -89,9 +94,12 @@ nav.scrolled {
 }
 
 .nav-logo {
-	font-family: "Patrick Hand", cursive;
-	font-size: 2rem;
+	font-family: "Kalam", cursive;
 	font-weight: 700;
+	font-style: normal;
+
+	font-size: 2rem;
+	font-weight: 400;
 	color: var(--white);
 	text-decoration: none;
 	text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
@@ -128,9 +136,9 @@ nav.scrolled {
 }
 
 .nav-links a {
-	font-family: "Patrick Hand", cursive;
-	font-size: 1.3rem;
-	font-weight: 600;
+	font-family: "Kalam", cursive;
+	font-weight: 400;
+	font-style: normal;
 	color: var(--white);
 	text-decoration: none;
 	padding: 8px 18px;
@@ -329,9 +337,10 @@ nav.scrolled {
 	display: inline-block;
 	background: var(--yellow);
 	color: var(--text-dark);
-	font-family: "Patrick Hand", cursive;
-	font-size: 1.2rem;
+	font-family: "Kalam", cursive;
 	font-weight: 700;
+	font-style: normal;
+	font-size: 1.2rem;
 	padding: 6px 24px;
 	border-radius: 50px;
 	margin-bottom: 20px;
@@ -379,9 +388,10 @@ nav.scrolled {
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
-	font-family: "Patrick Hand", cursive;
-	font-size: 1.3rem;
-	font-weight: 700;
+	font-family: "Kalam", cursive;
+	font-weight: 400;
+	font-style: normal;
+	font-style: normal;
 	padding: 14px 32px;
 	border-radius: 50px;
 	text-decoration: none;
@@ -461,7 +471,9 @@ section {
 }
 
 .section-title {
-	font-family: "Patrick Hand", cursive;
+	font-family: "Kalam", cursive;
+	font-weight: 700;
+	font-style: normal;
 	font-size: clamp(2.5rem, 5vw, 4rem);
 	text-align: center;
 	margin-bottom: 16px;
@@ -510,6 +522,11 @@ section {
 	grid-template-columns: 1fr 1fr;
 	gap: 64px;
 	align-items: center;
+}
+
+.story-img img {
+	display: flex;
+	width: 100%;
 }
 
 .book-mockup {
@@ -570,9 +587,11 @@ section {
 	margin-bottom: 10px;
 }
 .book-cover-placeholder p {
-	font-family: "Patrick Hand", cursive;
-	font-size: 1.8rem;
+	font-family: "Kalam", cursive;
 	font-weight: 700;
+	font-style: normal;
+	font-size: 1.8rem;
+	font-weight: 400;
 	text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
 }
 
@@ -703,9 +722,11 @@ section {
 }
 
 .stat-number {
-	font-family: "Patrick Hand", cursive;
-	font-size: 3.5rem;
+	font-family: "Kalam", cursive;
 	font-weight: 700;
+	font-style: normal;
+	font-size: 3.5rem;
+	font-weight: 400;
 	color: var(--yellow);
 	display: block;
 	line-height: 1;
@@ -767,7 +788,9 @@ section {
 	font-size: 3.5rem;
 }
 .product-img-placeholder .p-text {
-	font-family: "Patrick Hand", cursive;
+	font-family: "Kalam", cursive;
+	font-weight: 700;
+	font-style: normal;
 	font-size: 1.2rem;
 	text-align: center;
 	padding: 0 12px;
@@ -779,9 +802,10 @@ section {
 	right: 16px;
 	background: var(--yellow);
 	color: var(--text-dark);
-	font-family: "Patrick Hand", cursive;
-	font-size: 1rem;
+	font-family: "Kalam", cursive;
 	font-weight: 700;
+	font-style: normal;
+	font-size: 1rem;
 	padding: 4px 12px;
 	border-radius: 50px;
 	transform: rotate(3deg);
@@ -796,7 +820,9 @@ section {
 }
 
 .product-info h3 {
-	font-family: "Patrick Hand", cursive;
+	font-family: "Kalam", cursive;
+	font-weight: 700;
+	font-style: normal;
 	font-size: 1.5rem;
 	color: var(--text-dark);
 	margin-bottom: 6px;
@@ -807,6 +833,34 @@ section {
 	color: var(--text-mid);
 	line-height: 1.5;
 	margin-bottom: 16px;
+	display: -webkit-box;
+	-webkit-line-clamp: 3; /* koliko linija da prikaže pre skraćivanja */
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	transition: -webkit-line-clamp 0.3s ease;
+}
+
+.product-info p.expanded {
+	-webkit-line-clamp: unset;
+	overflow: visible;
+}
+
+.see-more-btn {
+	background: none;
+	border: none;
+	color: var(--blue-dark);
+	font-family: "Nunito", sans-serif;
+	font-weight: 700;
+	font-size: 0.9rem;
+	cursor: pointer;
+	padding: 0;
+	margin-bottom: 16px;
+	display: inline-block;
+	text-decoration: underline;
+}
+
+.see-more-btn:hover {
+	color: var(--red);
 }
 
 .product-footer {
@@ -818,9 +872,11 @@ section {
 }
 
 .product-price {
-	font-family: "Patrick Hand", cursive;
+	font-family: "Kalam", cursive;
+	font-weight: 400;
+	font-style: normal;
 	font-size: 1.6rem;
-	font-weight: 700;
+	font-weight: 400;
 	color: var(--red);
 }
 
@@ -934,7 +990,9 @@ section {
 	display: block;
 	color: var(--white);
 	font-size: 0.95rem;
-	font-family: "Patrick Hand", cursive;
+	font-family: "Kalam", cursive;
+	font-weight: 400;
+	font-style: normal;
 	font-size: 1.1rem;
 }
 
@@ -1031,7 +1089,9 @@ section {
 }
 
 .mission-content .big-quote {
-	font-family: "Patrick Hand", cursive;
+	font-family: "Kalam", cursive;
+	font-weight: 400;
+	font-style: normal;
 	font-size: clamp(1.6rem, 3.5vw, 2.4rem);
 	color: var(--text-dark);
 	line-height: 1.5;
@@ -1080,7 +1140,9 @@ section {
 }
 
 .footer-brand .logo {
-	font-family: "Patrick Hand", cursive;
+	font-family: "Kalam", cursive;
+	font-weight: 400;
+	font-style: normal;
 	font-size: 2.2rem;
 	color: var(--yellow);
 	display: flex;
@@ -1098,7 +1160,9 @@ section {
 }
 
 .footer-col h4 {
-	font-family: "Patrick Hand", cursive;
+	font-family: "Kalam", cursive;
+	font-weight: 700;
+	font-style: normal;
 	font-size: 1.4rem;
 	color: var(--yellow);
 	margin-bottom: 16px;
@@ -1203,7 +1267,7 @@ section {
 	margin: 0 auto;
 }
 
-/* ===== SCROLL REVEAL ===== */
+/* ===== SCROLL value-cardL ===== */
 .reveal {
 	opacity: 0;
 	transform: translateY(40px);
