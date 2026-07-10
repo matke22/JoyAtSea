@@ -1407,6 +1407,11 @@ section {
 	.nav-links a {
 		font-size: 2rem;
 	}
+
+	.nav-logo img {
+		width: 5rem;
+	}
+
 	.hamburger {
 		display: flex;
 		z-index: 1001;
