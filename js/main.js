@@ -38,6 +38,19 @@ if (hamburger) {
 			document.body.style.overflow = "";
 		}
 	});
+
+	// Close on scroll
+	window.addEventListener(
+		"scroll",
+		() => {
+			if (navLinks.classList.contains("open")) {
+				hamburger.classList.remove("open");
+				navLinks.classList.remove("open");
+				document.body.style.overflow = "";
+			}
+		},
+		{ passive: true },
+	);
 }
 
 // ===== SCROLL REVEAL =====

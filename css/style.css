@@ -769,6 +769,26 @@ section {
 	rotate: -1deg;
 }
 
+.video-wrapper {
+	position: relative;
+	width: 100%;
+	max-width: 800px;
+	aspect-ratio: 16 / 9;
+	margin: 0 auto;
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	box-shadow: var(--shadow-lg);
+	border: 4px solid var(--white);
+}
+
+.video-wrapper iframe {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
 .product-img {
 	width: 100%;
 	aspect-ratio: 3/4;
