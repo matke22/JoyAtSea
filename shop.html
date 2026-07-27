@@ -32,7 +32,20 @@
 				border-radius: 50px;
 				border: 3px solid var(--blue);
 				background: transparent;
-				color: var(--blue-dark);
+				color: var(--red);
+				cursor: pointer;
+				transition: all 0.3s ease;
+			}
+
+			.filter-btn-disabled {
+				font-family: "Caveat", cursive;
+				font-size: 2rem;
+				font-weight: 600;
+				padding: 8px 22px;
+				border-radius: 50px;
+				border: 3px solid var(--blue);
+				background: transparent;
+				color: gray;
 				cursor: pointer;
 				transition: all 0.3s ease;
 			}
@@ -264,8 +277,8 @@
 					<button class="filter-btn" onclick="filterProducts('cards', this)">
 						ABC Cards
 					</button>
-					<button class="filter-btn" onclick="filterProducts('toys', this)">
-						Toys(soon)
+					<button class="filter-btn-disabled" onclick="">
+						Toys(coming soon)
 					</button>
 					<button class="filter-btn" onclick="filterProducts('podcast', this)">
 						Podcast
@@ -529,7 +542,7 @@
 						permission.
 					</p>
 					<a
-						href="YOUR_IngramSpark_STOREFRONT_LINK"
+						href="https://shop.ingramspark.com/b/084?params=sQqWZgiI7M3MGwggZtmiuGdicFNL2VbLKhiHYtYXyLu&utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZnRzaAS8pf1wZG9mAmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDzEyNDAyNDU3NDI4NzQxNAABp8N5HvCpZ3BHooE8qTthQGfboJasi7maFwN2JS-lAzaxJG_0or3SMO8UllYd_aem_HT1iLD550cazXNlybi0LeQ"
 						target="_blank"
 						rel="noopener"
 						class="btn btn-secondary"
