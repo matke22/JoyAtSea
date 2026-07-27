@@ -83,14 +83,21 @@ nav {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	transition: all 0.4s ease;
+	transition: padding 0.4s ease;
 }
 
 nav.scrolled {
+	padding: 12px 40px;
+}
+
+nav.scrolled::before {
+	content: "";
+	position: absolute;
+	inset: 0;
 	background: rgba(93, 170, 200, 0.95);
 	backdrop-filter: blur(12px);
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-	padding: 12px 40px;
+	z-index: -1;
 }
 
 .nav-logo {
