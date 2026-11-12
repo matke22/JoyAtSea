@@ -1097,8 +1097,6 @@ section {
 	height: 100%;
 	object-fit: cover;
 	display: block;
-	/* source photos have white padding around the porthole – zoom so it fills the circle */
-	transform: scale(1.6);
 }
 
 .team-card:hover .team-avatar {
