@@ -319,6 +319,30 @@ nav.scrolled::before {
 	animation-delay: 2.5s;
 	font-size: 2rem;
 }
+.float-el:nth-child(7) {
+	top: 28%;
+	left: 20%;
+	animation-delay: 3s;
+	animation-duration: 7s;
+}
+.float-el:nth-child(8) {
+	top: 30%;
+	right: 21%;
+	animation-delay: 0.8s;
+	animation-duration: 7.5s;
+}
+.float-el:nth-child(9) {
+	bottom: 10%;
+	left: 22%;
+	animation-delay: 1.8s;
+	animation-duration: 6.5s;
+}
+.float-el:nth-child(10) {
+	bottom: 8%;
+	right: 24%;
+	animation-delay: 3.5s;
+	animation-duration: 8s;
+}
 
 @keyframes floatAround {
 	0%,
@@ -1068,6 +1092,15 @@ section {
 	transition: transform 0.4s ease;
 }
 
+.team-avatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	/* source photos have white padding around the porthole – zoom so it fills the circle */
+	transform: scale(1.6);
+}
+
 .team-card:hover .team-avatar {
 	transform: scale(1.1) rotate(5deg);
 }
@@ -1404,6 +1437,14 @@ section {
 	.footer-brand {
 		grid-column: 1 / -1;
 	}
+
+	/* tighter nav so all links fit on tablets */
+	.nav-links {
+		gap: 4px;
+	}
+	.nav-links a {
+		padding: 6px 12px;
+	}
 }
 
 @media (max-width: 768px) {
@@ -1475,6 +1516,11 @@ section {
 
 	.page-header {
 		padding: 100px 24px 60px;
+	}
+
+	/* keep mobile hero light: show only the first 6 stickers */
+	.float-el:nth-child(n + 7) {
+		display: none;
 	}
 }
 

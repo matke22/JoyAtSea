@@ -46,7 +46,8 @@
 				border: 3px solid var(--blue);
 				background: transparent;
 				color: gray;
-				cursor: pointer;
+				cursor: not-allowed;
+				opacity: 0.7;
 				transition: all 0.3s ease;
 			}
 
@@ -169,12 +170,26 @@
 			}
 
 			@media (max-width: 640px) {
-				.filter-btn {
-					font-size: 1.1rem;
+				.filter-bar {
+					gap: 8px;
+					margin-bottom: 32px;
+				}
+				.filter-btn,
+				.filter-btn-disabled {
+					font-size: 1.3rem;
+					padding: 6px 16px;
 				}
 				.shop-page-grid {
 					grid-template-columns: 1fr 1fr;
 					gap: 20px;
+				}
+				/* podcast videos are too small in half-width columns */
+				.shop-page-grid .video-wrapper {
+					grid-column: 1 / -1;
+				}
+				.shop-cta-banner {
+					margin-top: 56px;
+					padding: 40px 24px;
 				}
 			}
 
@@ -190,18 +205,18 @@
 	<body>
 		<!-- ===== NAVIGATION ===== -->
 		<nav id="navbar">
-			<a href="index.html" class="nav-logo">
+			<a href="./" class="nav-logo">
 				<img src="{css,js,images}/photos/joy-text-120w.png" alt="" />
 			</a>
 			<button class="hamburger" aria-label="Menu">
 				<span></span><span></span><span></span>
 			</button>
 			<ul class="nav-links">
-				<li><a href="#about" class="active">About</a></li>
-				<li><a href="shop.html">Shop</a></li>
-				<li><a href="about.html">About Us</a></li>
+				<li><a href="./#about">About</a></li>
+				<li><a href="shop" class="active">Shop</a></li>
+				<li><a href="about">About Us</a></li>
 				<li><a href="#contact">Contact</a></li>
-				<li><a href="shop.html" class="btn-nav">Order Now 🛒</a></li>
+				<li><a href="shop" class="btn-nav">Order Now 🛒</a></li>
 			</ul>
 		</nav>
 
@@ -246,6 +261,21 @@
 					src="{css,js,images}/photos/stiker_13.png"
 					alt="Sun"
 				/>
+				<img
+					class="float-el"
+					src="{css,js,images}/photos/stiker_32.png"
+					alt=""
+				/>
+				<img
+					class="float-el"
+					src="{css,js,images}/photos/stiker_33.png"
+					alt=""
+				/>
+				<img
+					class="float-el"
+					src="{css,js,images}/photos/stiker_35.png"
+					alt=""
+				/>
 			</div>
 			<div class="page-header-content">
 				<h1>Our Books</h1>
@@ -270,7 +300,7 @@
 				<div class="filter-bar reveal">
 					<button
 						class="filter-btn active"
-						onclick="filterProducts('all', this)"
+						onclick="filterProducts('books', this)"
 					>
 						All Books
 					</button>
@@ -288,7 +318,7 @@
 				<!-- Products Grid -->
 				<div class="shop-page-grid" id="productsGrid">
 					<!-- PRODUCT 1 -->
-					<div class="product-card-lg reveal" data-category="all">
+					<div class="product-card-lg reveal" data-category="books">
 						<div style="position: relative">
 							<div class="product-badge">Bestseller ⭐</div>
 							<div class="product-img-placeholder">
@@ -330,17 +360,15 @@
 					</div>
 
 					<!-- PRODUCT 2 -->
-					<div class="product-card-lg reveal" data-category="all">
+					<div class="product-card-lg reveal" data-category="books">
 						<div style="position: relative">
 							<div class="product-badge">Coming in late 2026</div>
 							<div class="product-img-placeholder">
-								<div class="p-emoji">
-									<img
-										class="product-img"
-										src="{css,js,images}/photos/SunnyAtSea.png"
-										alt="Sunny At Sea"
-									/>
-								</div>
+								<img
+									class="product-img"
+									src="{css,js,images}/photos/sunny_at_sea_cover.png"
+									alt="Sunny at Sea"
+								/>
 							</div>
 						</div>
 						<div class="product-info">
@@ -374,14 +402,15 @@
 					</div>
 
 					<!-- PRODUCT 3 -->
-					<div class="product-card-lg reveal" data-category="all">
+					<div class="product-card-lg reveal" data-category="books">
 						<div style="position: relative">
-							<div
-								class="product-img-placeholder"
-								style="background: linear-gradient(135deg, #c9b630, #8a7010)"
-							>
-								<div class="p-emoji"></div>
-								<div class="p-text">Grace at Sea</div>
+							<div class="product-badge">Coming early 2027</div>
+							<div class="product-img-placeholder">
+								<img
+									class="product-img"
+									src="{css,js,images}/photos/grace_at_sea_cover.png"
+									alt="Grace at Sea"
+								/>
 							</div>
 						</div>
 						<div class="product-info">
@@ -586,10 +615,10 @@
 					<div class="footer-col">
 						<h4>Pages</h4>
 						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About Us</a></li>
-							<li><a href="shop.html">Shop</a></li>
-							<li><a href="index.html#contact">Contact</a></li>
+							<li><a href="./">Home</a></li>
+							<li><a href="about">About Us</a></li>
+							<li><a href="shop">Shop</a></li>
+							<li><a href="./#contact">Contact</a></li>
 						</ul>
 					</div>
 
@@ -615,7 +644,7 @@
 		<script src="js/main.js"></script>
 		<script>
 			// Filter functionality
-			function filterProducts(category, btn) {
+			function filterProducts(category, btn, animate = true) {
 				// Update active button
 				document
 					.querySelectorAll(".filter-btn")
@@ -624,14 +653,21 @@
 
 				// Filter cards
 				document.querySelectorAll(".product-card-lg").forEach((card) => {
-					if (category === "all" || card.dataset.category === category) {
+					if (card.dataset.category === category) {
 						card.style.display = "";
-						card.style.animation = "fadeInUp 0.4s ease both";
+						if (animate) card.style.animation = "fadeInUp 0.4s ease both";
 					} else {
 						card.style.display = "none";
 					}
 				});
 			}
+
+			// On page load show only books (podcasts & cards have their own tabs)
+			filterProducts(
+				"books",
+				document.querySelector(".filter-btn.active"),
+				false,
+			);
 		</script>
 	</body>
 </html>
