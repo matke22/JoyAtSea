@@ -1,15 +1,7 @@
-# Clean URLs: /shop instead of /shop.html (Apache / cPanel hosting)
-Options -MultiViews
+# Pages live in folders (about/index.html, shop/index.html), so /about/ and
+# /shop/ work on any server without rewrites. This file only redirects old
+# .html links (bookmarks, Google results) to the new addresses.
 RewriteEngine On
 
-# 1) Old links: /index.html -> /   and   /page.html -> /page  (301 redirect)
-RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
-RewriteRule ^ /%1 [R=301,L]
-
-RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
-RewriteRule ^ /%1 [R=301,L]
-
-# 2) Serve /page from page.html behind the scenes
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^(.+?)/?$ $1.html [L]
+RewriteRule ^(about|shop)\.html$ /$1/ [R=301,L]
+RewriteRule ^index\.html$ / [R=301,L]

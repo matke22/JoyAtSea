@@ -278,71 +278,53 @@ nav.scrolled::before {
 
 .float-el {
 	position: absolute;
-	font-size: 2.5rem;
+	width: auto;
+	height: auto;
+	max-width: 90px;
+	max-height: 100px;
 	animation: floatAround 6s ease-in-out infinite;
 	filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
 }
 
-.float-el:nth-child(1) {
-	top: 15%;
-	left: 8%;
-	animation-delay: 0s;
-	font-size: 3rem;
-}
-.float-el:nth-child(2) {
-	top: 20%;
-	right: 10%;
-	animation-delay: 1s;
-	font-size: 2rem;
-}
-.float-el:nth-child(3) {
-	bottom: 30%;
-	left: 5%;
-	animation-delay: 2s;
-	font-size: 2.2rem;
-}
-.float-el:nth-child(4) {
-	bottom: 20%;
-	right: 8%;
-	animation-delay: 0.5s;
-	font-size: 3.5rem;
-}
-.float-el:nth-child(5) {
-	top: 50%;
-	left: 3%;
-	animation-delay: 1.5s;
-	font-size: 1.8rem;
-}
-.float-el:nth-child(6) {
-	top: 40%;
-	right: 4%;
-	animation-delay: 2.5s;
-	font-size: 2rem;
-}
-.float-el:nth-child(7) {
-	top: 28%;
-	left: 20%;
-	animation-delay: 3s;
-	animation-duration: 7s;
-}
-.float-el:nth-child(8) {
-	top: 30%;
-	right: 21%;
-	animation-delay: 0.8s;
-	animation-duration: 7.5s;
-}
-.float-el:nth-child(9) {
-	bottom: 10%;
-	left: 22%;
-	animation-delay: 1.8s;
-	animation-duration: 6.5s;
-}
-.float-el:nth-child(10) {
-	bottom: 8%;
-	right: 24%;
-	animation-delay: 3.5s;
-	animation-duration: 8s;
-}
+/* Animation timing – odd stickers on the left, even on the right */
+.float-el:nth-child(1) { animation-delay: 0s; }
+.float-el:nth-child(2) { animation-delay: 1s; }
+.float-el:nth-child(3) { animation-delay: 2s; }
+.float-el:nth-child(4) { animation-delay: 0.5s; }
+.float-el:nth-child(5) { animation-delay: 1.5s; }
+.float-el:nth-child(6) { animation-delay: 2.5s; }
+.float-el:nth-child(7) { animation-delay: 3s; animation-duration: 7s; }
+.float-el:nth-child(8) { animation-delay: 0.8s; animation-duration: 7.5s; }
+.float-el:nth-child(9) { animation-delay: 1.8s; animation-duration: 6.5s; }
+.float-el:nth-child(10) { animation-delay: 3.5s; animation-duration: 8s; }
+
+/* Sticker slots: 3 columns per side (2% / 11% / 20%), separate rows,
+   so no two stickers share the same spot. */
+
+/* Home hero (tall) – top row, middle row, bottom row */
+.hero .float-el:nth-child(1) { top: 16%; left: 2%; }
+.hero .float-el:nth-child(2) { top: 16%; right: 2%; }
+.hero .float-el:nth-child(3) { top: 16%; left: 20%; }
+.hero .float-el:nth-child(4) { top: 16%; right: 20%; }
+.hero .float-el:nth-child(5) { top: 44%; left: 11%; }
+.hero .float-el:nth-child(6) { top: 44%; right: 11%; }
+.hero .float-el:nth-child(7) { bottom: 8%; left: 2%; }
+.hero .float-el:nth-child(8) { bottom: 8%; right: 2%; }
+.hero .float-el:nth-child(9) { bottom: 8%; left: 20%; }
+.hero .float-el:nth-child(10) { bottom: 8%; right: 20%; }
+
+/* Shop / About page headers (short) – top row + zig-zag bottom row */
+.page-header .float-el { max-height: 90px; }
+.page-header .float-el:nth-child(1) { top: 36%; left: 2%; }
+.page-header .float-el:nth-child(2) { top: 36%; right: 2%; }
+.page-header .float-el:nth-child(3) { top: 36%; left: 20%; }
+.page-header .float-el:nth-child(4) { top: 36%; right: 20%; }
+.page-header .float-el:nth-child(5) { bottom: 6%; left: 6.5%; }
+.page-header .float-el:nth-child(6) { bottom: 6%; right: 6.5%; }
+.page-header .float-el:nth-child(7) { top: 36%; left: 11%; }
+.page-header .float-el:nth-child(8) { top: 36%; right: 11%; }
+.page-header .float-el:nth-child(9) { bottom: 6%; left: 15.5%; }
+.page-header .float-el:nth-child(10) { bottom: 6%; right: 15.5%; }
 
 @keyframes floatAround {
 	0%,
@@ -788,6 +770,23 @@ section {
 	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 	border: 3px solid transparent;
 	cursor: pointer;
+	/* stack image + info so price/buttons sit at the bottom of every card */
+	display: flex;
+	flex-direction: column;
+}
+
+.product-card .product-info {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.product-card .see-more-btn {
+	align-self: flex-start;
+}
+
+.product-card .product-footer {
+	margin-top: auto;
 }
 
 .product-card:hover {
@@ -952,6 +951,75 @@ section {
 	color: var(--white);
 	border-color: var(--red-dark);
 	transform: scale(1.05);
+}
+
+/* Unreleased products – looks like a button but can't be clicked */
+.btn-order.btn-coming-soon,
+.btn-order.btn-coming-soon:hover {
+	background: #d9d9d9;
+	color: #6b6b6b;
+	border-color: #bdbdbd;
+	cursor: not-allowed;
+	transform: none;
+	user-select: none;
+}
+
+.product-footer .btn-coming-soon {
+	flex: 1 1 100%;
+	justify-content: center;
+}
+
+/* Store buttons (Amazon / IngramSpark) */
+.store-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	flex: 1 1 100%;
+}
+
+.btn-store {
+	flex: 1 1 130px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	height: 48px;
+	padding: 0 18px;
+	border-radius: 50px;
+	text-decoration: none;
+	font-family: "Nunito", sans-serif;
+	font-weight: 800;
+	font-size: 1.05rem;
+	transition: all 0.3s ease;
+}
+
+.btn-store:hover {
+	transform: translateY(-2px) scale(1.03);
+	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.btn-store-amazon {
+	background: #131921;
+	color: #fff;
+	border: 2px solid #131921;
+}
+
+.btn-store-amazon svg {
+	width: 24px;
+	height: 24px;
+	fill: #ff9900;
+	flex-shrink: 0;
+}
+
+.btn-store-ingram {
+	background: #fff;
+	border: 2px solid var(--blue);
+}
+
+.btn-store-ingram img {
+	height: 22px;
+	width: auto;
+	display: block;
 }
 
 /* ===== TESTIMONIALS ===== */
@@ -1264,10 +1332,21 @@ section {
 	border: 2px solid rgba(255, 255, 255, 0.15);
 }
 
+.social-link svg {
+	width: 20px;
+	height: 20px;
+	fill: var(--white);
+	transition: fill 0.3s ease;
+}
+
 .social-link:hover {
 	background: var(--yellow);
 	transform: translateY(-3px);
 	border-color: var(--yellow-dark);
+}
+
+.social-link:hover svg {
+	fill: var(--text-dark);
 }
 
 .footer-bottom {
@@ -1287,7 +1366,7 @@ section {
 
 /* ===== PAGE HEADER ===== */
 .page-header {
-	min-height: 45vh;
+	min-height: max(45vh, 400px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -1436,6 +1515,11 @@ section {
 		grid-column: 1 / -1;
 	}
 
+	/* not enough room for 3 sticker columns per side – show 6 */
+	.float-el:nth-child(n + 7) {
+		display: none;
+	}
+
 	/* tighter nav so all links fit on tablets */
 	.nav-links {
 		gap: 4px;
@@ -1516,10 +1600,30 @@ section {
 		padding: 100px 24px 60px;
 	}
 
-	/* keep mobile hero light: show only the first 6 stickers */
-	.float-el:nth-child(n + 7) {
-		display: none;
+	/* Mobile: 6 small stickers, 3 per side, staggered so they don't touch */
+	.float-el {
+		max-width: 56px;
+		max-height: 64px;
 	}
+	.page-header .float-el {
+		max-height: 64px;
+	}
+	.hero .float-el:nth-child(1),
+	.hero .float-el:nth-child(2) { top: 13%; bottom: auto; }
+	.hero .float-el:nth-child(3),
+	.hero .float-el:nth-child(4) { top: 45%; bottom: auto; }
+	.hero .float-el:nth-child(5),
+	.hero .float-el:nth-child(6) { top: auto; bottom: 5%; }
+	.page-header .float-el:nth-child(1),
+	.page-header .float-el:nth-child(2) { top: 28%; bottom: auto; }
+	.page-header .float-el:nth-child(3),
+	.page-header .float-el:nth-child(4) { top: auto; bottom: 4%; }
+	/* short page headers: only the 4 corner stickers, away from the title */
+	.page-header .float-el:nth-child(n + 5) { display: none; }
+	.hero .float-el:nth-child(odd),
+	.page-header .float-el:nth-child(odd) { left: 4%; right: auto; }
+	.hero .float-el:nth-child(even),
+	.page-header .float-el:nth-child(even) { right: 4%; left: auto; }
 }
 
 @media (max-width: 480px) {
